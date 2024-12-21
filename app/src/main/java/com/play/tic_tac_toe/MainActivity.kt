@@ -33,6 +33,12 @@ class MainActivity : ComponentActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initBoard()
+
+        binding.playAgainButton.setOnClickListener {
+            resetBoard()
+            binding.playAgainButton.visibility = View.GONE
+            binding.turn.visibility = View.VISIBLE
+        }
     }
 
     private fun initBoard()
@@ -101,6 +107,8 @@ class MainActivity : ComponentActivity() {
 
         Toast.makeText(this, "$title\n$message", Toast.LENGTH_LONG).show()
         resetBoard()
+        binding.turn.visibility = View.GONE
+        binding.playAgainButton.visibility = View.VISIBLE
     }
 
     private fun resetBoard()
